@@ -1,0 +1,49 @@
+document.getElementById('listAllButton').addEventListener('click', function() {
+fetch('/api/persons')
+.then(response => response.json())
+.then(persons => {
+const personsList = document.getElementById('personsList');
+personsList.innerHTML = ''; // Vyčistíme předchozí obsah
+
+if (persons.length === 0) {
+personsList.innerHTML = '<p>Žádné osoby nejsou uloženy.</p>';
+return;
+}
+
+const table = document.createElement('table');
+table.className = 'table table-striped';
+
+// Hlavička tabulky
+const thead = document.createElement('thead');
+thead.innerHTML = `
+<tr>
+    <th>Jméno</th>
+    <th>Příjmení</th>
+    <th>Email</th>
+    <th>Telefon</th>
+</tr>
+`;
+table.appendChild(thead);
+
+// Tělo tabulky
+const tbody = document.createElement('tbody');
+persons.forEach(person => {
+const row = document.createElement('tr');
+row.innerHTML = `
+<td>${person.firstName}</td>
+<td>${person.lastName}</td>
+<td>${person.email}</td>
+<td>${person.phoneNumber}</td>
+`;
+tbody.appendChild(row);
+});
+table.appendChild(tbody);
+
+personsList.appendChild(table);
+})
+.catch(error => {
+console.error('Chyba při načítání osob:', error);
+document.getElementById('personsList').innerHTML =
+'<p class="text-danger">Nastala chyba při načítání osob.</p>';
+});
+});
