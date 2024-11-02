@@ -1,0 +1,1 @@
+Sháním práce, a tak tady ukládám všechny doposud udělané projekty. Jestli to čteš a můžeš něco poradit ohledně kódu, prosím napiš mi, abych se zdokonaloval. Děkuji. Jestli jsi stejně začínající jako já, tak hodně štěstí!
