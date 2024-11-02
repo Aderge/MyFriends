@@ -41,34 +41,3 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
-    // Kód pro komunikaci se Spring Boot backendem
-    document.getElementById('personForm').addEventListener('submit', function(e) {
-        e.preventDefault();
-
-        const formData = new FormData(this);
-        const person = Object.fromEntries(formData.entries());
-
-        fetch('/api/persons', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(person),
-        })
-        .then(response => response.json())
-        .then(data => {
-            console.log('Osoba byla úspěšně uložena:', data);
-            // Zde můžete přidat kód pro aktualizaci UI
-        })
-        .catch((error) => {
-            console.error('Chyba při ukládání osoby:', error);
-        });
-    });
-
-    document.getElementById('deleteButton').addEventListener('click', function() {
-        // Implementace mazání osoby
-    });
-
-    document.getElementById('findButton').addEventListener('click', function() {
-        // Implementace hledání osoby
-    });
